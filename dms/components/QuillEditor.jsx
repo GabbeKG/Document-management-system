@@ -53,14 +53,19 @@ const QuillEditor = () => {
      const test=JSON.stringify(delta)
     setContent(delta)
     console.log(delta)
-
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth()+1;
+    const day = today.getDate();
+    const formattedDate=`${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`
+    
      const res = await fetch("/api", {
        method: 'POST',
        headers: {
          "Content-Type": "application/json"
         
        },
-       body: JSON.stringify({content:test})
+       body: JSON.stringify({content:test, createdAt: formattedDate})
      })
      setContent("");
   }
