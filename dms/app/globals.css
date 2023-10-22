@@ -27,13 +27,15 @@ body {
 }
 .ql-toolbar{
   background-color: var(--foreground-rgb);
-  width: 100vh;
+  width: 1040px;
+  min-height: 5rem;
   border-radius: 1.5%;
+  
 }
 
 .ql-container, .ql-editor{
-  min-height: 100vh;
-  width: 100vh;
+  min-height: 900px;
+  width: 1040px;
   background-color: aliceblue;
   border-radius: 0.5%;
 }

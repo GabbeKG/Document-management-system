@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Navigation from './Navigation'
 
 
 export default function Header() {
@@ -9,6 +10,7 @@ export default function Header() {
             <Link href="/">
             <h1 className={" text-7xl ml-10"}>DMS</h1>
             </Link>
+            <Navigation/>
             
         </header>
     )

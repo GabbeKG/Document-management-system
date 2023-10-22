@@ -1,11 +1,13 @@
 // components/QuillEditor.js
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css'; // Quill's CSS
 
 const QuillEditor = () => {
   const editorRef = useRef(null);
   const quillRef = useRef(null);
+
+  const [content, setContent] = useState("");
 
   var toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -38,7 +40,31 @@ const QuillEditor = () => {
       });
     }
   }, []);
+  async function Save() {
+    function deltaToPlainText(delta) {
+      return delta.ops.map(op => op.insert).join('');
+    }
+    
+    
+    let newcontent = document.getElementsByClassName("ql-editor");
+    let delta = quillRef.current.getContents();
+    const plainContent = deltaToPlainText(delta);
+    
+     const test=JSON.stringify(delta)
+    setContent(delta)
+    console.log(delta)
 
+     const res = await fetch("/api", {
+       method: 'POST',
+       headers: {
+         "Content-Type": "application/json"
+        
+       },
+       body: JSON.stringify({content:test})
+     })
+     setContent("");
+  }
+  
   return (
 
     <div
@@ -46,7 +72,11 @@ const QuillEditor = () => {
       " min-h-screen max-w-max flex flex-col items-center justify-center border-r-5 mt-2"
     }>
 
-  <div  ref={editorRef} />
+      <div ref={editorRef} />
+      <button className="flex justify-center items-center w-52 h-12 hover:bg-cyan-600 bg-blue-200 font-bold sticky bottom-0"
+          onClick={() => Save()
+            
+          }>Save</button>
   </div>
 )
 };
