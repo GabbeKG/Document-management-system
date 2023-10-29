@@ -17,7 +17,8 @@ export async function CaptureQuillsToImage() {
 
     const data = await res.json();
     const imageUrls = await Promise.all(data.map(async (item) => {
-      const delta = JSON.parse(item.content);
+        const delta = JSON.parse(item.content);
+        console.log("DELTA",delta)
       if (!delta || !delta.ops) {
         throw new Error('Invalid delta content');
       }

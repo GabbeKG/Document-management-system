@@ -30,10 +30,10 @@ export default function Home() {
               const contentAsHtml = convertDeltaToHTML(JSON.parse(content));
 
               // Generate a thumbnail image from the HTML content
-              const dataUrl = await generateThumbnailFromHTML(contentAsHtml, title);
+              const dataUrl = await generateThumbnailFromHTML(contentAsHtml);
               titles.push(title)
               imageUrls.push(dataUrl);
-              ids.push(id)
+              ids.push(id);
               console.log("DATA ",imageUrls);
               
             } else {
@@ -54,10 +54,10 @@ export default function Home() {
 
     getAndSetImages();
   }, []);
-  console.log("What is this?: ",imageUrls)
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <DocumentGallery imageUrls={imageUrls} titles={titles} ids={ ids } />
+    <main className="flex min-h-screen flex-col items-center mb-56">
+      <DocumentGallery imageUrls={imageUrls} titles={titles} ids={ids} />
     </main>
   );
 }

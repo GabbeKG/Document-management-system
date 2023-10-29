@@ -1,7 +1,7 @@
 export interface Document{
     id: number,
     content:string,
-    author: string,
+    title: string,
     createdAt: Date,
     lastUpdated:Date
 }
