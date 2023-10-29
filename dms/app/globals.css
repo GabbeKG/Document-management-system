@@ -13,7 +13,7 @@
 .previews h2{
   font-size: 4.5%;
  }
- .previews h3,.previews p,.previews pre,.previews strong{
+ .previews h3,.previews p,.previews pre,.previews strong,.previews span{
   font-size: 4%;
  }
  .previews> h4{

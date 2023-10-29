@@ -6,7 +6,7 @@ import  {generateThumbnailFromHTML}  from '../utils/generateThumbnails';
 import DocumentGallery from '../components/DocumentGallery';
 
 export default function Home() {
-  const [imageUrls, setImageUrls] = useState<string[]>([]);
+  const [elements, setElements] = useState<string[]>([]);
   const [titles, setTitles] = useState<string[]>([]);
   const[ids, setIds]=useState<string[]>([])
 
@@ -17,7 +17,7 @@ export default function Home() {
         const data = await fetch('/api').then((res) => res.json());
 
         // Initialize an array to store thumbnail image URLs
-        const imageUrls = [];
+        const elements = [];
         const titles = [];
         const ids = [];
 
@@ -30,18 +30,18 @@ export default function Home() {
               const contentAsHtml = convertDeltaToHTML(JSON.parse(content));
 
               // Generate a thumbnail image from the HTML content
-              const dataUrl = await generateThumbnailFromHTML(contentAsHtml);
+              const dataHtml = await generateThumbnailFromHTML(contentAsHtml);
               titles.push(title)
-              imageUrls.push(dataUrl);
+              elements.push(dataHtml);
               ids.push(id);
-              console.log("DATA ",imageUrls);
+              
               
             } else {
               console.error('Invalid content data received:', item);
             }
           }
 
-          setImageUrls(imageUrls);
+          setElements(elements);
           setTitles(titles)
           setIds(ids)
         } else {
@@ -57,7 +57,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center mb-56">
-      <DocumentGallery imageUrls={imageUrls} titles={titles} ids={ids} />
+      <DocumentGallery elements={elements} titles={titles} ids={ids} />
     </main>
   );
 }

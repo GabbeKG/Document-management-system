@@ -51,11 +51,11 @@ const QuillEditor = () => {
       
       let newcontent = document.getElementsByClassName("ql-editor");
       let delta = quillRef.current.getContents();
-      const plainContent = deltaToPlainText(delta);
-      console.log(title);
+      
+      
       const test=JSON.stringify(delta)
       setContent(delta)
-      console.log(delta)
+      
       const today = new Date();
       const year = today.getFullYear();
       const month = today.getMonth()+1;

@@ -17,7 +17,7 @@ const EditDocument = ({ id }) => {
         }
 
         const data = await res.json();
-          console.log(data);
+          
           setTitle(data[0].title);
         var toolbarOptions = [
             ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -45,7 +45,7 @@ const EditDocument = ({ id }) => {
             },
             theme: 'snow',
           });
-          console.log("test",[data[0].content]);
+          
           
           
           quillRef.current.setContents(JSON.parse(data[0].content));
@@ -69,12 +69,12 @@ const EditDocument = ({ id }) => {
         
         if (title !== "" || null) {
       
-            let newcontent = document.getElementsByClassName("ql-editor");
+            
             let delta = quillRef.current.getContents();            
-            console.log(title);
+            
             const test = JSON.stringify(delta)
             setContent(delta)
-            console.log(delta)
+            
             const today = new Date();
             const year = today.getFullYear();
             const month = today.getMonth() + 1;

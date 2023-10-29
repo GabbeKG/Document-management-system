@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 
-export default function DocumentGallery({ imageUrls, titles, ids }) {
+export default function DocumentGallery({ elements, titles, ids }) {
   async function DeleteDocument(id) {
     try {
       const res = await fetch(`api/${id}`, {
@@ -29,7 +29,7 @@ export default function DocumentGallery({ imageUrls, titles, ids }) {
     <div id='gallery' className="grid justify-center items-center text-cyan-800 font-bold">
       <h1 className='flex justify-center mb-10 text-3xl bg-blue-300 p-10'>All Documents</h1>
       <div className='flex flex-wrap justify-center'>
-        {imageUrls.map((imageUrl, index) => (
+        {elements.map((element, index) => (
           <div id={ids[index]} className='w-full m-2 md:w-1/2 lg:w-1/3 xl:w-1/6' key={index}>
             <div className='previewWrapper flex flex-wrap  overflow-clip'>
               <h2 className='titles w-full md:w-48 flex justify-center bg-indigo-300 mx-4'>{titles[index]}</h2>
@@ -39,7 +39,7 @@ export default function DocumentGallery({ imageUrls, titles, ids }) {
                 <li><button onClick={() => DeleteDocument(ids[index])}>Delete</button></li>
               </ul>
               <Link href={'/documents/' + ids[index]}>
-                <div className="previews bg-white mx-4 min-h-full" key={index} dangerouslySetInnerHTML={{ __html: imageUrl }}></div>
+                <div className="previews bg-white mx-4 min-h-full" key={index} dangerouslySetInnerHTML={{ __html: element }}></div>
               </Link>
             </div>
           </div>
