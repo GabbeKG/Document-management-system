@@ -20,12 +20,12 @@ Without NEXTPUBLIC in the variable name Next won't be able to find your varaible
 
 npm i
 
-npm mysql2
+npm i mysql2
 
-npm next
+npm i next
 
-npm quill
+npm i quill
 
-npm quill-delta-to-html
+npm i quill-delta-to-html
 
 npm run dev
